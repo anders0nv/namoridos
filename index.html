@@ -1,218 +1,202 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anderson ❤️ Maria Clara</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            min-height: 100vh;
-            background: url('foto-campos.jpg') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            overflow: hidden;
-            color: #fff;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anderson ❤️ Maria Clara</title>
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
+  <!-- Favicon de coração -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
 
-        .conteudo {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 20px;
-        }
+  <!-- Cor da barra do navegador -->
+  <meta name="theme-color" content="#c1121f" />
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 0.2em;
-            text-shadow: 1px 1px 4px #000;
-        }
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-        small {
-            margin-bottom: 0.2em;
-            text-shadow: 1px 1px 4px #000;
-        }
+    body {
+      background: #000;
+      color: #fff;
+      position: relative;
+    }
 
-        h2 {
-            font-size: 1.5em;
-            margin: 0.5em 0 0em;
-            text-shadow: 1px 1px 4px #000;
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('foto-campos.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      z-index: -2;
+    }
 
-        #contador {
-            font-size: 3.5em;
-            font-weight: bold;
-            text-shadow: 1px 1px 4px #000;
-        }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
 
-        p {
-            font-size: 1.1em;
-            color: #f8f8f8;
-            text-shadow: 1px 1px 3px #000;
-        }
+    .conteudo {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #ff6b6b;
-            border: none;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s ease;
-        }
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 1px 1px 4px #000;
+    }
 
-        button:hover {
-            background-color: #e63946;
-        }
+    h2 {
+      font-size: 1.5em;
+      margin: 0.5em 0 0.5em;
+      text-shadow: 1px 1px 4px #000;
+    }
 
-        #mensagem {
-            display: none;
-            margin-top: 20px;
-            font-size: 1.2em;
-            background: rgba(255, 255, 255, 0.8);
-            color: #800f2f;
-            padding: 15px 25px;
-            border-radius: 10px;
-            max-width: 80%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
+    #contador {
+      font-size: 3.5em;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+      text-shadow: 1px 1px 4px #000;
+    }
 
-        .heart {
-            position: absolute;
-            color: #ffb3c6;
-            font-size: 20px;
-            animation: floatUp 8s linear infinite;
-            opacity: 0.7;
-        }
+    p {
+      font-size: 1.1em;
+      color: #f8f8f8;
+      text-shadow: 1px 1px 3px #000;
+    }
 
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) scale(1);
-                opacity: 0;
-            }
+    small {
+      color: #f8f8f8;
+      text-shadow: 1px 1px 3px #000;
+    }
 
-            50% {
-                opacity: 1;
-            }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff6b6b;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+    }
 
-            100% {
-                transform: translateY(-10vh) scale(1.5);
-                opacity: 0;
-            }
-        }
+    button:hover {
+      background-color: #e63946;
+    }
 
-        .twinkle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #fff;
-            border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-            opacity: 0.6;
-        }
+    #mensagem {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2em;
+      background: rgba(255, 255, 255, 0.85);
+      color: #800f2f;
+      padding: 15px 25px;
+      border-radius: 10px;
+      max-width: 80%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
 
-        @keyframes twinkle {
+    #hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 3;
+    }
 
-            0%,
-            100% {
-                opacity: 0.2;
-                transform: scale(1);
-            }
+    .heart {
+      position: absolute;
+      color: #ffb3c6;
+      font-size: 20px;
+      animation: floatUp 8s linear forwards;
+      opacity: 0.7;
+    }
 
-            50% {
-                opacity: 1;
-                transform: scale(1.8);
-            }
-        }
-    </style>
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="overlay"></div>
+  <div class="overlay"></div>
 
-    <div class="conteudo">
-        <h1>Anderson ❤️ Maria Clara</h1>
-        <h2>Estamos juntos há:</h2>
-        <div id="contador">...</div>
-        <h3>Desde 27 de novembro de 2024 💘</h3>
+  <div class="conteudo">
+    <h1>Anderson ❤️ Maria Clara</h1>
+    <h2>Estamos juntos há:</h2>
+    <div id="contador">...</div>
+    <h2>Desde 27 de novembro de 2024 💘</h2>
+    <small>Você achou o mapa das estrelas brega mas eu te amo mesmo assim hahahahah</small>
+  </div>
 
-        <small>Você achou o mapa das estrelas brega mas eu te amo mesmo assim hahahahah </small>
-    </div>
+  <div id="hearts-container"></div>
 
-    <script>
-        const dataInicio = new Date("2024-11-27T00:00:00");
+  <script>
+    const dataInicio = new Date("2024-11-27T00:00:00");
 
-        function atualizarContador() {
-            const agora = new Date();
-            const diff = agora - dataInicio;
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = agora - dataInicio;
 
-            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutos = Math.floor((diff / (1000 * 60)) % 60);
-            const segundos = Math.floor((diff / 1000) % 60);
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
 
-            document.getElementById("contador").textContent =
-                `${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
-        }
+      document.getElementById("contador").textContent =
+        `${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+    }
 
-        function mostrarMensagem() {
-            document.getElementById("mensagem").style.display = 'block';
-        }
+    function mostrarMensagem() {
+      document.getElementById("mensagem").style.display = 'block';
+    }
 
-        setInterval(atualizarContador, 1000);
-        atualizarContador();
-    </script>
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
 
-    <script>
-        function criarCoracao() {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.textContent = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.fontSize = (Math.random() * 20 + 10) + "px";
-            heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 10000);
-        }
+  <script>
+    function criarCoracao() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.top = "100vh";
+      heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+      heart.style.animationDuration = (Math.random() * 4 + 6) + "s";
+      document.getElementById("hearts-container").appendChild(heart);
+      setTimeout(() => heart.remove(), 15000);
+    }
 
-        setInterval(criarCoracao, 500);
-    </script>
-
-    <script>
-        function criarTwinkle() {
-            const star = document.createElement("div");
-            star.className = "twinkle";
-            star.style.left = Math.random() * 100 + "vw";
-            star.style.top = Math.random() * 100 + "vh";
-            star.style.animationDuration = (Math.random() * 4 + 2) + "s";
-            document.body.appendChild(star);
-        }
-
-        for (let i = 0; i < 50; i++) {
-            criarTwinkle();
-        }
-    </script>
+    setInterval(criarCoracao, 500);
+  </script>
 </body>
-
 </html>
